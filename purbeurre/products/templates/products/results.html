@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="page-section ">
+    
+        <center>
+        {% if query %}
+          <h2>Vos produits:{{query}}</h2>
+        {% else %}
+            <h2> Retapez votre demande</h2>
+        {% endif %}
+        </center>
+       
+        
+            <!--<li>{{ product.name }}</li>--> 
+        {% for product in products %}
+        <div class="row">
+        <div class="col-lg-4 col-sm-6 mb-4 text-center">
+            <h3><a><h3>{{ product.name }}</a></h3>
+            <a href="/">
+                <img class="img-responsive" src="{{ product.image }}" alt="{{ product.name }}">
+            </a>
+            
+            <p><img src="https://static.openfoodfacts.org/images/attributes/nutriscore-{{product.nutriscore}}.svg" width="50"></p> 
+            <h3><a href="{% url 'product_detail' product.id %}"> {{ product.name }} </a></h3>
+            <h3><a href="{% url 'favoris' product.id %}"> Sauvegarder </a></h3>
+                
+        </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div>{% endif %}
+           
+        {% endfor %}
+
+              
+</section>
+
+{% endblock %}

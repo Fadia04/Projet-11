@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Votre produit {{ favorite.name }}</h2>
+
+
+<ul>
+    <li>id : {{ favorite.id }}</li>
+    <li>nom : {{ favorite.name }}</li>
+    <li>nutriscore : {{ favorite.nutriscore }}</li>
+    <li>stores : {{ favorite.stores }}</li>
+    <li>image : <a href="/">
+        <img class="img-responsive" src="{{ favorite.image }}" alt="{{ product.name }}">
+    </a>
+    <li>code : {{ favorite.code }}</li>
+    <li>id : {{ favorite.id }}</li>
+</ul>
+{% endblock content %}

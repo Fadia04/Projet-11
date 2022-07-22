@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="page-section bg-primary">
+<p>Vous pouvez remplacer ce produit par  :</p>
+  
+    {% for product in products %}
+        {% if product.nutriscore == 'a' %}
+        <li>{{ product.name }}</li>
+        <li>{{ product.nutriscore }}</li>
+        <div class="col-sm-4 text-center">
+            <a href="/">
+              <img class="img-responsive" src="{{ product.image }}" alt="{{ product.name }}">
+            </a>
+            <h3><a href="{% url 'product_detail' product.id %}"> {{ product.name }} </a></h3>
+        {% endif %}        
+    </div>
+    {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div>{% endif %}
+    {% endfor %}
+</section>
+{% endblock %}
+
+<!--<p>Vous pouvez remplacer ce produit par  :</p>
+    <ul>
+        {% for product in products %}
+        <li>{{ product.name }}</li>
+        <a href="{% url 'product_detail' product.id %}"> {{ product.name }} </a>
+        {% endfor %}
+    </ul>-->
+
+
+
+

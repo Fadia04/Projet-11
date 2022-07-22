@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Le produit est {{ product.name }}</h2>
+
+<ul>
+    <li>id : {{ product.id }}</li>
+    <li>nom : {{ product.name }}</li>
+    <li>nutriscore : {{ product.nutriscore }}</li>
+    <li>stores : {{ product.stores }}</li>
+    <li>image : <a href="/">
+        <img class="img-responsive" src="{{ product.image }}" alt="{{ product.name }}">
+    </a>
+    <li>code : {{ product.code }}</li>
+    <li>id : {{ product.id }}</li>
+</ul>
+{% endblock content %}
