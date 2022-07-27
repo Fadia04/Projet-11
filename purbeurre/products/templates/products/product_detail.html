@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Le produit est {{ product.name }}</h2>
-
+<header class="masthead"     
+    <div class="container px-4 px-lg-5 h-100">        
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end">
+                <center>
+                    <h2>Le produit est {{ product.name }}</h2>
+                </center>
+               
+            </div>
+        </div>
+    </div>
+</header>
 <ul>
     <li>id : {{ product.id }}</li>
     <li>nom : {{ product.name }}</li>

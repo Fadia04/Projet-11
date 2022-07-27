@@ -1,4 +1,4 @@
-import products.views
+
 """purbeurre URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import users.views
+import products.views
+import favoris.views 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', users.views.login_page, name='login'),
@@ -26,5 +29,7 @@ urlpatterns = [
     path('products/', products.views.product, name='product'),
     path('products/<int:id>/', products.views.product_detail, name='product_detail'),
     path('results/', products.views.results, name='results'),  
-    path('favoris/<int:id>/', products.views.favoris, name='favoris'),  
+    path('favoris/<int:id>/', favoris.views.favoris, name='favoris'), 
+    path('favoris/<int:id>/delete/', favoris.views.delete_favoris, name='delete_favoris'), 
+    path('favoris/', favoris.views.favoris, name='favoris_page'), 
 ]

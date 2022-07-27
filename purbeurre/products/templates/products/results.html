@@ -2,18 +2,25 @@
 
 {% block content %}
 
-<section class="page-section ">
+<header class="masthead"  
+    <div class="container px-4 px-lg-5 h-100">                
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end text-white">
+                <center>
+                    {% if query %}
+                      <h1>Voici le produit que vous avez demandé:{{query}}</h1>
+                    {% else %}
+                        <h2> Retapez votre demande</h2>
+                    {% endif %}
+                </center>
+               
+            </div>
+        </div>
+    </div>
+</header>
+
+    <section class="page-section ">
     
-        <center>
-        {% if query %}
-          <h2>Vos produits:{{query}}</h2>
-        {% else %}
-            <h2> Retapez votre demande</h2>
-        {% endif %}
-        </center>
-       
-        
-            <!--<li>{{ product.name }}</li>--> 
         {% for product in products %}
         <div class="row">
         <div class="col-lg-4 col-sm-6 mb-4 text-center">
@@ -24,7 +31,12 @@
             
             <p><img src="https://static.openfoodfacts.org/images/attributes/nutriscore-{{product.nutriscore}}.svg" width="50"></p> 
             <h3><a href="{% url 'product_detail' product.id %}"> {{ product.name }} </a></h3>
+            
+            {% if favorite %}
+            <h3><a href="{% url 'delete_favoris' product.id %}"> Supprimer </a></h3>
+            {% else %}
             <h3><a href="{% url 'favoris' product.id %}"> Sauvegarder </a></h3>
+            {% endif %}             
                 
         </div>
         </div>
@@ -33,6 +45,6 @@
         {% endfor %}
 
               
-</section>
+    </section>
 
 {% endblock %}

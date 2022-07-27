@@ -23,13 +23,7 @@ def product_detail(request,id):
     product = Product.objects.get(id=id)
     return render(request, 'products/product_detail.html', {'product': product})
 
-def favoris(request,id):
-    if request.method == "POST":
-        favoris = Product.objects.get(id=id)
-        Favorite.objects.get_or_create(product = favoris, user = request.user)
-    favorite = Favorite.objects.filter(user = request.user)
-    
-    return render(request, 'products/favoris.html', {'favorite': favorite})
+
     
 def results(request):
     if request.method == "POST":

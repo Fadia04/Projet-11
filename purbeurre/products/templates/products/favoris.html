@@ -1,18 +1,53 @@
+
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Favoris{% endblock title %}
 
 {% block content %}
-<h2>Votre produit {{ favorite.name }}</h2>
 
+<header class="masthead"     
+    <div class="container px-4 px-lg-5 h-100">        
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end text-white">
+                <center>
+                    <h1>Mes produits enregistrés</h1>
+                </center>
+               
+            </div>
+        </div>
+    </div>
+</header>
 
-<ul>
-    <li>id : {{ favorite.id }}</li>
-    <li>nom : {{ favorite.name }}</li>
-    <li>nutriscore : {{ favorite.nutriscore }}</li>
-    <li>stores : {{ favorite.stores }}</li>
-    <li>image : <a href="/">
-        <img class="img-responsive" src="{{ favorite.image }}" alt="{{ product.name }}">
-    </a>
-    <li>code : {{ favorite.code }}</li>
-    <li>id : {{ favorite.id }}</li>
-</ul>
-{% endblock content %}
+<body>
+    <div class="container">
+        <div class="row">           
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">nom</th>
+                        <th scope="col">id</th>
+                        <th scope="col">nutriscore</th>
+                        <th scope="col">image</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    
+                    {% for favoris in favorite %}
+                    <tr>    
+                        <th scope="row">{{ favoris.product.name }}</th>
+                        
+                        <td>{{ favoris.nutriscore }}</td>
+                        <td><a href="/">
+                            <img class="img-responsive" src="{{ favoris.image }}" width=20/>
+                        </a>
+                        </td>    
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            
+        </div>
+    </div>
+</body>
+{% endblock %}
