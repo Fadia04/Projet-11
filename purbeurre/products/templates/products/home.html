@@ -15,9 +15,9 @@
             <form class="d-flex" method=POST action="{% url 'results' %}">
                 {% csrf_token %}
                 <input class="form-control me-2"
-                type="search" placeholder="Produit" 
+                type="search" placeholder="Produit recherché" 
                 aria-label="Chercher" name="query">
-                <button class="btn btn-outline-secondary" type="submit">Chercher</button>
+                <button class="btn btn-outline-primary" type="submit">Chercher</button>
             </form>
             </div>
         </div>

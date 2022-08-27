@@ -29,7 +29,7 @@
             <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 bg-primary"  id="mainNav">
                 <div class="container px-4 px-lg-5">
                     <a class="navbar-brand" href="/">
-                        <img class="img-responsive" src="static/assets/img/logo_pur_beurre.png" width=30/></a></li>Pur Beurre</a>
+                        <img class="img-responsive" src="{% static 'assets/img/logo_pur_beurre.png' %}" width=30/></a></li>Pur Beurre</a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ms-auto my-2 my-lg-0">
@@ -44,17 +44,17 @@
                             <!--<li class="nav-item"><a class="nav-link" href="#about">Chercher</a></li>-->
                             {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link" href="/">
-                                <img class="img-responsive" src="static/assets/img/user_account_icon_145918.png" width=30</a>Mon compte</li>
+                                <img class="img-responsive" src="{% static 'assets/img/user_account_icon_145918.png' %}" width=30</a>Mon compte</li>
                             {% else %}
                             <li class="nav-item"><a class="nav-link" <a href="{% url 'signup' %}">Créer un compte</a></li>
                             {% endif %}
-                            <li class="nav-item"><a class="nav-link" href="/">
-                                <img class="img-responsive" src="static/assets/img/noun-carrot-29691.png" width=30/>Mes aliments</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'favoris_page' %}">
+                                <img class="img-responsive" src="{% static 'assets/img/noun-carrot-29691.png' %}" width=30/>Mes aliments</a></li>
                             <!--<li class="nav-item"><a class="nav-link" href="#contact">déconnexion</a></li>-->
                             <!--<li class="nav-item"><a class="nav-link" <a href="{% url 'login' %}">Connexion</a></li>-->
                             {% if user.is_authenticated %}
                                 <li class="nav-item"><a class="nav-link"<a href="{% url 'logout' %}">
-                                    <img class="img-responsive" src="static/assets/img/logout_icon_138409.png" width=30/>déconnexion</a><:li>
+                                    <img class="img-responsive" src="{% static 'assets/img/logout_icon_138409.png' %}" width=30/>déconnexion</a></li>
                             {% else %}
                                 <li class="nav-item"><a class="nav-link" <a href="{% url 'login' %}">Connexion</a></li>
                             {% endif %}                                  

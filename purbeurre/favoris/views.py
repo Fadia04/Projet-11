@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from favoris.models import Favorite
 from products.models import Product
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-def favoris(request,id=None):
+@login_required
+def favoris(request, id=None):
+    print("ID : ", id)
     if id is not None:
         favoris = Product.objects.get(id=id)
         Favorite.objects.get_or_create(product = favoris, user = request.user)
@@ -13,12 +16,9 @@ def favoris(request,id=None):
     
     return render(request, 'products/favoris.html', {'favorite': favorite})
 
-def delete_favoris(request, id):
-    #favoris = Product.objects.get(id=id)
-    #favoris = Favorite.objects.filter(id=id)
-    favoris = Favorite.objects.filter(user = request.user)
-    if request.method == 'POST':
-        favoris.delete()
-        return redirect('products/results.html')
-    return render(request, 'favoris/delete.html', {'favoris': favoris})
+@login_required
+def delete_favoris(request,id):
+    favoris = Favorite.objects.get(id=id)
+    favoris.delete()
+    return redirect('favoris_page')
     

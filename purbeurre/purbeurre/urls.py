@@ -30,6 +30,6 @@ urlpatterns = [
     path('products/<int:id>/', products.views.product_detail, name='product_detail'),
     path('results/', products.views.results, name='results'),  
     path('favoris/<int:id>/', favoris.views.favoris, name='favoris'), 
-    path('favoris/<int:id>/delete/', favoris.views.delete_favoris, name='delete_favoris'), 
+    path('delete/<int:id>/', favoris.views.delete_favoris, name='delete_favoris'), 
     path('favoris/', favoris.views.favoris, name='favoris_page'), 
 ]
