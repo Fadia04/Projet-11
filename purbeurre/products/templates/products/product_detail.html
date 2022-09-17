@@ -6,22 +6,27 @@
         <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
             <div class="col-lg-8 align-self-end">
                 <center>
-                    <h2>Le produit est {{ product.name }}</h2>
+                    <h2>Votre produit: {{ product.name }}</h2>
                 </center>
                
             </div>
         </div>
     </div>
 </header>
-<ul>
-    <li>id : {{ product.id }}</li>
-    <li>nom : {{ product.name }}</li>
-    <li>nutriscore : {{ product.nutriscore }}</li>
-    <li>stores : {{ product.stores }}</li>
-    <li>image : <a href="/">
+
+
+    <li> 
         <img class="img-responsive" src="{{ product.image }}" alt="{{ product.name }}">
-    </a>
-    <li>code : {{ product.code }}</li>
-    <li>id : {{ product.id }}</li>
-</ul>
+        
+    </li>
+    <center>
+    <ul>
+        <li>id : {{ product.id }}</li>
+        <li>nom : {{ product.name }}</li>
+        <li>nutriscore : {{ product.nutriscore }}</li>
+        <li>stores : {{ product.stores }}</li>    
+        <li>code : {{ product.code }}</li>
+    
+    </ul>
+    </center>
 {% endblock content %}

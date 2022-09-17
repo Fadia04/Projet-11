@@ -39,19 +39,23 @@
                                 type="search" placeholder="Chercher" 
                                 aria-label="Chercher" name="query">
                                 <!--<button class="icon"><i class="fa fa-search"></i></button>-->
-                                <button class="btn btn-outline-secondary" type="submit">Chercher</button>
+                                <button id="result-button" class="btn btn-outline-secondary" type="submit">Chercher</button>
                             </form>
-                            <!--<li class="nav-item"><a class="nav-link" href="#about">Chercher</a></li>-->
+                        
                             {% if user.is_authenticated %}
-                            <li class="nav-item"><a class="nav-link" href="/">
+                            <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">
                                 <img class="img-responsive" src="{% static 'assets/img/user_account_icon_145918.png' %}" width=30</a>Mon compte</li>
                             {% else %}
                             <li class="nav-item"><a class="nav-link" <a href="{% url 'signup' %}">Créer un compte</a></li>
                             {% endif %}
+
+                            {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'favoris_page' %}">
                                 <img class="img-responsive" src="{% static 'assets/img/noun-carrot-29691.png' %}" width=30/>Mes aliments</a></li>
-                            <!--<li class="nav-item"><a class="nav-link" href="#contact">déconnexion</a></li>-->
-                            <!--<li class="nav-item"><a class="nav-link" <a href="{% url 'login' %}">Connexion</a></li>-->
+                            {% else %}
+                            <li class="nav-item"><a class="nav-link" <a href="{% url 'login' %}">Mes aliments</a></li>
+                            {% endif %}
+
                             {% if user.is_authenticated %}
                                 <li class="nav-item"><a class="nav-link"<a href="{% url 'logout' %}">
                                     <img class="img-responsive" src="{% static 'assets/img/logout_icon_138409.png' %}" width=30/>déconnexion</a></li>
@@ -67,12 +71,20 @@
         {% block content %}   
         {% endblock %}
                 
-        <!-- Footer-->        
+
             <footer class="bg-light py-5">
                 <div class="container px-4 px-lg-5">
-                    <div class="small text-center text-muted">Mentions légales &copy; Contact</div>
+                   <!--<div class="row">-->
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                      <div class="col-lg-4 col-md-6 text-center">
+                         <!--<div class="service-box mt-5 mx-auto">-->
+                            <!--<i class="fas fa-4x fa-gem text-icone mb-3 sr-icon-1" ></i>-->
+                            <a href ="{% url 'notices' %}" class="small text-center text-muted">Mentions légales</a>
+                      </div>
+                    </div>
                 </div>
-            </footer>
+                     
+            </footer>      
         
         
         <!-- Bootstrap core JS-->

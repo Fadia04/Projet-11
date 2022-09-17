@@ -1,4 +1,3 @@
-
 """purbeurre URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -18,18 +17,19 @@ from django.contrib import admin
 from django.urls import path
 import users.views
 import products.views
-import favoris.views 
+import favoris.views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('login/', users.views.login_page, name='login'),
-    path('logout/', users.views.logout_user, name='logout'),
-    path('', products.views.home, name='home'),
-    path('signup/', users.views.signup_page, name='signup'),
-    path('products/', products.views.product, name='product'),
-    path('products/<int:id>/', products.views.product_detail, name='product_detail'),
-    path('results/', products.views.results, name='results'),  
-    path('favoris/<int:id>/', favoris.views.favoris, name='favoris'), 
-    path('delete/<int:id>/', favoris.views.delete_favoris, name='delete_favoris'), 
-    path('favoris/', favoris.views.favoris, name='favoris_page'), 
+    path("admin/", admin.site.urls),
+    path("login/", users.views.login_page, name="login"),
+    path("logout/", users.views.logout_user, name="logout"),
+    path("", products.views.home, name="home"),
+    path("signup/", users.views.signup_page, name="signup"),
+    path("profile/", users.views.profile_page, name="profile"),
+    path("products/<int:id>/", products.views.product_detail, name="product_detail"),
+    path("results/", products.views.results, name="results"),
+    path("favoris/<int:id>/", favoris.views.favoris, name="favoris"),
+    path("delete/<int:id>/", favoris.views.delete_favoris, name="delete_favoris"),
+    path("favoris/", favoris.views.favoris, name="favoris_page"),
+    path("legal_notices/", users.views.legal_notices, name="notices"),
 ]

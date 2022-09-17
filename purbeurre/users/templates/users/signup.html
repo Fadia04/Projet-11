@@ -1,13 +1,25 @@
 
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Inscription</h2>
-    {% if form.errors %}
-        {{ form.errors }}
-    {% endif %}
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >S’inscrire</button>
-    </form>
+<body>
+    <header class="masthead-ter"> 
+        <div class="container px-4 px-lg-5 h-50">                
+            <div class="row gx-4 gx-lg-5 h-50 align-items-center justify-content-center text-center">
+                <div class="col-lg-8 align-self-end text-white">
+                    <center>                       
+                        <h2>Inscription</h2>
+                    </center>
+                        {% if form.errors %}
+                            {{ form.errors }}
+                        {% endif %}
+                        <form id="loginForm" method="post">
+                            {{ form.as_p }}
+                            {% csrf_token %}
+                        <div class="d-grid" ><button id="inscription-button" name="bouton-inscription" type="submit">S’inscrire</button></div>
+                        </form>               
+                </div>
+            </div>
+        </div>
+    </header>
+</body>
 {% endblock content %}
