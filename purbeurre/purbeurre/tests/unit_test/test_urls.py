@@ -1,9 +1,7 @@
 import pytest
 from django.urls import reverse, resolve
-from django.test import Client
 from favoris.models import Favorite
-from products.models import Product, Category, Categorized
-from pytest_django.asserts import assertTemplateUsed
+from products.models import Product
 from django.contrib.auth.models import User
 
 

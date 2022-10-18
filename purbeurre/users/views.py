@@ -10,11 +10,13 @@ from django.contrib.auth.decorators import login_required
 
 
 def logout_user(request):
+    """View to allow a loged user to logout"""
     logout(request)
     return redirect("login")
 
 
 def login_page(request):
+    """View to allow a registered user to log"""
     form = forms.LoginForm()
     message = ""
     if request.method == "POST":
@@ -35,6 +37,7 @@ def login_page(request):
 
 
 def signup_page(request):
+    """View used to return a signup form and allows a user to register"""
     form = forms.SignupForm()
     if request.method == "POST":
         form = forms.SignupForm(request.POST)
@@ -45,16 +48,14 @@ def signup_page(request):
             return redirect(settings.LOGIN_REDIRECT_URL)
     return render(request, "users/signup.html", context={"form": form})
 
+
 @login_required
 def profile_page(request):
-    
-    return render(
-        request,
-        "users/profile.html",
-    )
-    
+    """View used to return informations about a registered user"""
+    print("User : ", request.user.first_name)
+    return render(request,"users/profile.html")
+ 
+ 
 def legal_notices(request):
-    return render(
-        request,
-        "users/legal_notices.html",
-    )
+    """View used to return notices page"""
+    return render(request,"users/legal_notices.html")

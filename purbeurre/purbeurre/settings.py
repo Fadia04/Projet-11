@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,8 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-fm4gqs@+za0qm0vbx^3qotbg)sds-70k4)r2at#p#ni3yiq@on"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = False if os.environ.get("ENV", "development") == "production" else True
-DEBUG = True
+DEBUG = False if os.environ.get("ENV", "development") == "production" else True
+# DEBUG = True
 
 ALLOWED_HOSTS = [".herokuapp.com", "localhost", "127.0.0.1"]
 
@@ -150,4 +149,3 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "/login/"
 
-#django_heroku.settings(locals())

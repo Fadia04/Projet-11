@@ -1,9 +1,6 @@
 import pytest
-from django.urls import reverse, resolve
-from django.test import Client
 from favoris.models import Favorite
 from products.models import Product, Category, Categorized
-from pytest_django.asserts import assertTemplateUsed
 from django.contrib.auth.models import User
 
 
@@ -37,3 +34,4 @@ def test_categorized_model():
     categorized = Categorized.objects.create(product_id=product, category_id=category)
     expected_value = "LU biscuit"
     assert str(categorized) == expected_value
+    

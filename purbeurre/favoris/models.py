@@ -7,6 +7,7 @@ from products.models import Product
 
 
 class Favorite(models.Model):
+    """Model for the products registered by the users"""
     product = models.ForeignKey(
         Product, null=True, on_delete=models.SET_NULL, related_name="product"
     )

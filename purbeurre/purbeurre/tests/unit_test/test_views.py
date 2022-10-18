@@ -1,11 +1,10 @@
 import pytest
-from django.urls import reverse, resolve
+from django.urls import reverse
 from django.test import Client
 from favoris.models import Favorite
-from products.models import Product, Category, Categorized
+from products.models import Product
 from pytest_django.asserts import assertTemplateUsed
 from django.contrib.auth.models import User
-
 
 
 @pytest.mark.django_db
@@ -66,10 +65,10 @@ def test_product_detail_view(reset_sequences=True, transaction=True):
 @pytest.mark.django_db
 def test_results_view():
     client = Client()
-    prods = "nutella1", "nutella2", "nutella3"
-    product1 = Product.objects.create(name="nutella1", url="1")
-    product2 = Product.objects.create(name="nutella2", url="2")
-    product3 = Product.objects.create(name="nutella3", url="3")
+    "nutella1", "nutella2", "nutella3"
+    Product.objects.create(name="nutella1", url="1")
+    Product.objects.create(name="nutella2", url="2")
+    Product.objects.create(name="nutella3", url="3")
     path = reverse("results")
     response = client.post(path, {"query": "nutella"})
     nutella_products = Product.objects.all()
@@ -84,7 +83,7 @@ def test_results_view():
 def test_favoris_view():
     client = Client()
     prod = Product.objects.create(name="nutella")
-    test_user = User.objects.create_user(username="test_user", password="123456789")
+    User.objects.create_user(username="test_user", password="123456789")
     client.login(username="test_user", password="123456789")
     path = reverse("favoris", kwargs={"id": prod.id})
     response = client.get(path)

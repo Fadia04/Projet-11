@@ -4,12 +4,12 @@ from django.db import models
 # Create your models here.
 
 class Product(models.Model):
-    name = models.CharField(max_length=100)  # unique=True
+    """Model for the products with required parameters"""
+    name = models.CharField(max_length=512)  # unique=True
     nutriscore = models.CharField(max_length=1, null=False)
-
     image = models.URLField(null=True)
-    code = models.CharField(max_length=50)  # null=False
-    stores = models.CharField(max_length=200)  # null=False
+    code = models.CharField(max_length=512)  # null=False
+    stores = models.CharField(max_length=512)  # null=False
     url = models.URLField(unique=True)
 
     def __str__(self):
@@ -17,14 +17,16 @@ class Product(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)  # unique=True
-    # products = models.ManyToManyField(Product, through='Categorized')
+    """Model for the categories"""
+    name = models.CharField(max_length=512)  # unique=True
 
     def __str__(self):
         return f"{self.name}"
 
 
 class Categorized(models.Model):
+    """Model for the associative table with required fields"""
+    
     product_id = models.ForeignKey(
         Product, on_delete=models.CASCADE, null=True, verbose_name="product_id"
     )
