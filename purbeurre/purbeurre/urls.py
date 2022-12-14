@@ -19,6 +19,17 @@ import users.views
 import products.views
 import favoris.views
 
+
+from django.contrib.auth import views
+
+"""
+from django.contrib.auth.views import (
+    PasswordResetView,
+    PasswordResetDoneView,
+    PasswordResetConfirmView,
+    PasswordResetCompleteView,
+)
+"""
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("login/", users.views.login_page, name="login"),
@@ -32,4 +43,38 @@ urlpatterns = [
     path("delete/<int:id>/", favoris.views.delete_favoris, name="delete_favoris"),
     path("favoris/", favoris.views.favoris, name="favoris_page"),
     path("legal_notices/", users.views.legal_notices, name="notices"),
+    path(
+        "products/<int:id>/add-comment", products.views.add_comment, name="add-comment"
+    ),
+    path(
+        "products/<int:id>/delete-comment",
+        products.views.delete_comment,
+        name="delete-comment",
+    ),
+    path(
+        "reset_password",
+        views.PasswordResetView.as_view(template_name="users/password_reset.html"),
+        name="reset_password",
+    ),
+    path(
+        "reset_password_send",
+        views.PasswordResetDoneView.as_view(
+            template_name="users/password_reset_done.html"
+        ),
+        name="password_reset_done",
+    ),
+    path(
+        "reset/<uidb64>/<token>",
+        views.PasswordResetConfirmView.as_view(
+            template_name="users/password_reset_confirm.html"
+        ),
+        name="password_reset_confirm",
+    ),
+    path(
+        "reset_password_complete",
+        views.PasswordResetCompleteView.as_view(
+            template_name="users/password_reset_complete.html"
+        ),
+        name="password_reset_complete",
+    ),
 ]

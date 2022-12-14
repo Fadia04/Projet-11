@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 @pytest.mark.django_db
 def test_favoris_model():
+    """Test the creation of a favoris model"""
     prod = Product.objects.create(name="nutella")
     test_user = User.objects.create_user(username="test_user", password="123456789")
     favoris = Favorite.objects.create(product=prod, user=test_user)
@@ -15,6 +16,7 @@ def test_favoris_model():
 
 @pytest.mark.django_db
 def test_product_model():
+    """Test the creation of a product model"""
     products = Product.objects.create(name="nutella", nutriscore="d")
     expected_value = "nutella d"
     assert str(products) == expected_value
@@ -22,6 +24,7 @@ def test_product_model():
 
 @pytest.mark.django_db
 def test_category_model():
+    """Test the creation of a category model"""
     categories = Category.objects.create(name="chocolat")
     expected_value = "chocolat"
     assert str(categories) == expected_value
@@ -29,9 +32,9 @@ def test_category_model():
 
 @pytest.mark.django_db
 def test_categorized_model():
+    """Test the creation of a categorized model"""
     product = Product.objects.create(name="LU")
     category = Category.objects.create(name="biscuit")
     categorized = Categorized.objects.create(product_id=product, category_id=category)
     expected_value = "LU biscuit"
     assert str(categorized) == expected_value
-    

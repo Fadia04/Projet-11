@@ -53,9 +53,9 @@ def signup_page(request):
 def profile_page(request):
     """View used to return informations about a registered user"""
     print("User : ", request.user.first_name)
-    return render(request,"users/profile.html")
- 
- 
+    return render(request, "users/profile.html")
+
+
 def legal_notices(request):
     """View used to return notices page"""
-    return render(request,"users/legal_notices.html")
+    return render(request, "users/legal_notices.html")

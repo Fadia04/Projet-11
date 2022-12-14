@@ -1,32 +1,64 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<header class="masthead"     
+<header class="masthead-bis"     
     <div class="container px-4 px-lg-5 h-100">        
         <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
             <div class="col-lg-8 align-self-end">
                 <center>
                     <h2>Votre produit: {{ product.name }}</h2>
-                </center>
-               
+                </center>               
             </div>
         </div>
     </div>
 </header>
-
-
-    <li> 
-        <img class="img-responsive" src="{{ product.image }}" alt="{{ product.name }}">
-        
-    </li>
+<body>
     <center>
+    <li> 
+        <img class="img-responsive" src="{{ product.image }}" alt="{{ product.name }}">        
+    </li>
+    
     <ul>
         <li>id : {{ product.id }}</li>
         <li>nom : {{ product.name }}</li>
         <li>nutriscore : {{ product.nutriscore }}</li>
         <li>stores : {{ product.stores }}</li>    
-        <li>code : {{ product.code }}</li>
-    
+        <li>code : {{ product.code }}</li>    
     </ul>
+    <div class="container">
+        <h3>Commentaires</h3>
+        <!--<p><a class="btn btn-success" href="{% url 'add-comment' product.id %}"> Ajouter </a></p>--> 
+        <a class="btn btn-outline-primary" button id="comment-button" href="{% url 'add-comment' product.id %}" type="submit">Ajouter</button></a>
+                 
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Produit</th>
+                <th scope="col">Nom utilisateur</th>
+                <th scope="col">Commentaire</th>
+                <th scope="col">Date</th>  
+                <th scope="col">supprimer</th>                      
+            </tr>
+            </thead>
+            <tbody>
+            {% if not product.comments.all %}
+                <p>Aucun commentaire ajouté</p>
+            {% else %}
+                {% for comment in product.comments.all %}
+                <tr> 
+                    <td scope="row">{{ comment.product }}</td>
+                    <td scope="row">{{ comment.commenter_name }}</td>
+                    <td scope="row">{{ comment.comment_body }}</td>
+                    <td scope="row">{{ comment.date_added }}</td>
+                    
+                    <td><a class="btn btn-danger"href="{% url 'delete-comment' product.id %}"> Supprimer</a></td>                  
+                </tr>                                                            
+                {% endfor %}
+            {% endif %}
+                </tr>
+                </tbody>
+        </table>                  
+    </div>
     </center>
+</body>
 {% endblock content %}

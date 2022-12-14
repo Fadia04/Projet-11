@@ -97,7 +97,7 @@ DATABASES = {
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+DATABASES["default"].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -134,7 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR.joinpath('static'),]
+# STATICFILES_DIRS = [BASE_DIR.joinpath('static'),]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
@@ -149,3 +149,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "/login/"
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "fl.medja@gmail.com"
+EMAIL_HOST_PASSWORD = "xxxxxxxxx"
+EMAIL_USE_TLS = True

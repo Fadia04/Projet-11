@@ -39,19 +39,13 @@
                             <img class="img-responsive" src="{{ favoris.product.image }}" width=50/>
                         </a> </td>   
                         <th scope="row">{{ favoris.product.name }}</th>                        
-                        <td> <img src="https://static.openfoodfacts.org/images/attributes/nutriscore-{{favoris.product.nutriscore}}.svg" width="50"> </td>
-                           
-                    
-                    
+                        <td> <img src="https://static.openfoodfacts.org/images/attributes/nutriscore-{{favoris.product.nutriscore}}.svg" width="50"> </td>                                                                   
                         <td>
                             <form action="{% url 'delete_favoris' favoris.id %}" method="post">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-danger" value="Supprimer">
                             </form>
-                        </td>
-                    
-                    
-                     
+                        </td>                                                             
                     {% endfor %}
                     </tr>
                     </tbody>

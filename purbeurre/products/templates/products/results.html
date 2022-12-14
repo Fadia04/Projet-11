@@ -2,40 +2,36 @@
 {% load static %}
 
 {% block content %}
-<body>
+<!--<body>-->
 <header class="masthead-ter"> 
     <div class="container px-4 px-lg-5 h-25">                
         <div class="row gx-4 gx-lg-5 h-25 align-items-center justify-content-center text-center">
             <div class="col-lg-8 align-self-end text-white">
                 <center>
                     {% if query %}
-                      <h1>Voici les produits que vous avez demandés:{{query}}</h1>
+                      <h1>Voici les produits que vous avez demandés pour: {{query}}</h1>
                     {% else %}
-                        <h2> Retapez votre demande</h2>
+                        <h2> Veuillez retaper votre demande</h2>
                     {% endif %}
-                </center>
-               
+                </center>               
             </div>
         </div>
     </div>
 </header>
-
-
-    <section class="page-section" id="résultats">    
-        
-        <div class="container py-5 bg-light">
+<body>
+    <section class="page-section" id="résultats">            
+        <div class="container py-1 bg-light">
             <div class="row">
                 {% for product in products %}
                 <div class="col-md-4 col-sm-6 text-center">
-                    <div class="card-mb-4 shadow-sm">
-                    
-                    <h4><a>{{ product.name }}</a></h4>
+                    <div class="card-mb-4 shadow-sm">                    
                     
                     <a href="/">
                         <img class="img-responsive" src="{{ product.image }}" alt="{{ product.name }}" class="W-100">
                     </a>                    
                     <p><img src="https://static.openfoodfacts.org/images/attributes/nutriscore-{{product.nutriscore}}.svg" width="50"></p> 
-                    <h4><a href="{% url 'product_detail' product.id %}"> {{ product.name }} </a></h4>
+                    <h4><a id="product-name" href="{% url 'product_detail' product.id %}"> {{ product.name }} </a></h4>
+                    
                     <form action="{% url 'favoris' product.id %}" method="post">
                         {% csrf_token %}
                         <input type="submit" class="btn btn-success mb-2" value="Sauvegarder">
